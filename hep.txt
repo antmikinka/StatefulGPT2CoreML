@@ -1,0 +1,62 @@
+Loading model gpt2...
+Resetting kv-cache: input sequence length changed from 256 to 128
+/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/transformers/modeling_utils.py:4481: FutureWarning: `_is_quantized_training_enabled` is going to be deprecated in transformers 4.39.0. Please use `model.hf_quantizer.is_trainable` instead
+  warnings.warn(
+/Users/anthonymikinka/corenet/gpt2_hf_kv.py:37: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if current_seq_len != expected_seq_len:
+Loading model gpt2...
+Resetting kv-cache: input sequence length changed from 256 to 128
+Traceback (most recent call last):
+  File "/Users/anthonymikinka/corenet/gpt2_hf_kv.py", line 169, in <module>
+    main()
+  File "/Users/anthonymikinka/corenet/gpt2_hf_kv.py", line 122, in main
+    traced_model = torch.jit.trace(to_jit, [input_ids])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/jit/_trace.py", line 1000, in trace
+    traced_func = _trace_impl(
+                  ^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/jit/_trace.py", line 695, in _trace_impl
+    return trace_module(
+           ^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/jit/_trace.py", line 1303, in trace_module
+    _check_trace(
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/jit/_trace.py", line 343, in _check_trace
+    check_mod = torch.jit.trace_module(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/jit/_trace.py", line 1275, in trace_module
+    module._c._create_method_from_trace(
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1543, in _slow_forward
+    result = self.forward(*input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/gpt2_hf_kv.py", line 57, in forward
+    return self.model(input_ids=input_ids)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1543, in _slow_forward
+    result = self.forward(*input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anthonymikinka/corenet/gpt2_hf_kv.py", line 36, in forward
+    expected_seq_len = self.past_key_values[0][0].shape[2]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Cannot insert a Tensor that requires grad as a constant. Consider making it a parameter or input,
+
+big tensor printout / list
+
+
+[ torch.FloatTensor{1,12,256,64} ]
