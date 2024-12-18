@@ -11,3 +11,6 @@
 **Terminal Runs**
 - help.txt (oct 3, 2024)
 - hep.txt (oct 3, 2024)
+
+**Possible Prompt File**
+- prompting-gpt2.py
